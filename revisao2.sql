@@ -1,8 +1,10 @@
-create database revisaos; 
-     
-use revisaos;     
 
-create table saldo(
+create database revisao;
+
+use revisao;
+
+-- Tabela de Correntista
+create table correntista(
 ag int not null,
 conta int not null,
 nome varchar(50) not null,
@@ -10,16 +12,18 @@ email varchar(80) not null,
 telefone char(11) not null,
 saldo decimal(8,2) not null,
 primary key (ag,conta));
-     
+
 describe correntista;
--- insert é inserir, into é para dentro
-insert into correntista 
+
+insert into correntista
 (ag,conta,nome,email,telefone,saldo)
 values
-(8475,000000,"jorge","jo@gmail.com","988776655",100.00),
-(4642,000000,"Gabi","ga@gmail.com","988776655",100.00),
-(6744,000000,"Lolla","lo@gmail.com","988776655",100.00);
--- Eu quero escolher selecionar onde para correntista mostrar informações
+(7932,01675,"Jonathan","jonathan@itau-unibanco.com.br","996921877",20000.00),
+(7931,07229,"Nicole","nicole@itau-unibanco.com.br","996521478",10000.00),
+(0191,78450,"Jorge","jorge@itau-unibanco.com.br","87452127",15000.00),
+(0192,12547,"Ricardo","itau-unibanco.com.br","547896521",800.00);
+
+
 select * from correntista;
 
 create table fluxo_caixa(
@@ -33,7 +37,16 @@ primary key(ag,conta,fluxo));
 insert into fluxo_caixa
 (ag,conta,fluxo,entrada,saida)
 values
-(8475,000000,15,15500,0);
+(7932,01675,8,10000,0),
+(7932,01675,12,1000,0),
+(7931,07229,24,100,0),
+(7931,07229,12,10,0),
+(0191,78450,5,12000,0),
+(0191,78450,10,10200,0),
+(0192,12547,12,1500,0),
+(0192,12547,8,100,0),
+(0191,78450,9,1050,0),
+(0191,78450,2,15,0);
 
 select * from fluxo_caixa;
 
@@ -49,9 +62,13 @@ from correntista as c
 inner join fluxo_caixa as f
 on(c.ag=f.ag) and (c.conta=f.conta);
 
-select count(*) as total_pessoas from correntista;
+select c.ag,c.conta,c.nome,f.entrada,f.saida
+from correntista as c
+inner join fluxo_caixa as f
+on(c.a=f=1) and (c.conta=f=1);
 
-select count(*) as total_caixa from fluxo_caixa;
+select count(*) as total_registros from correntista;
 
+select count(*) as total_registros from fluxo_caixa;
 
-
+use revisao;

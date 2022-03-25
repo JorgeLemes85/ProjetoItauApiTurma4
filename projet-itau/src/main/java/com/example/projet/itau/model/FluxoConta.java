@@ -3,34 +3,40 @@ package com.example.projet.itau.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "fluxo_caixa")
+@Table(name="fluxo_caixa")
+
 public class FluxoConta {
 
 	@Id
-	@Column(name = "ag")
-	private int ag;
+	
+	@Column(name="conta") 
+	private int conta; 
+	
+	@Column(name="fluxo") 
+	private int fluxo; 
+	
+	@Column(name="entrada") 
+	private String entrada; 
+	
+	@Column(name="saida")
+	private String saida;
+	
 
-	@Column(name = "conta")
-	private int conta;
+	@ManyToOne
+	@JoinColumn(name="ag")
+	private Cliente titular;
 
-	@Column(name = "fluxo")
-	private int fluxo;
-
-	@Column(name = "entrada")
-	private double entrada;
-
-	@Column(name = "saida")
-	private double saida;
-
-	public int getAg() {
-		return ag;
+	public Cliente getTitular() {
+		return titular;
 	}
 
-	public void setAg(int ag) {
-		this.ag = ag;
+	public void setTitular(Cliente titular) {
+		this.titular = titular;
 	}
 
 	public int getConta() {
@@ -49,20 +55,23 @@ public class FluxoConta {
 		this.fluxo = fluxo;
 	}
 
-	public double getEntrada() {
+	public String getEntrada() {
 		return entrada;
 	}
 
-	public void setEntrada(double entrada) {
+	public void setEntrada(String entrada) {
 		this.entrada = entrada;
 	}
 
-	public double getSaida() {
+	public String getSaida() {
 		return saida;
 	}
 
-	public void setSaida(double saida) {
+	public void setSaida(String saida) {
 		this.saida = saida;
 	}
 
+	
+	
+	
 }

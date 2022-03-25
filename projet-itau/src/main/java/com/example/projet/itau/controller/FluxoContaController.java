@@ -9,18 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.projet.itau.dao.FluxoContaDao;
 import com.example.projet.itau.model.FluxoConta;
 
-	@RestController
+@RestController
 public class FluxoContaController {
 
-		@Autowired
-		private FluxoContaDao dao;
-		
-		@GetMapping("/conta")
-		
-		public ArrayList<FluxoConta> recuperarTudo() {
-			ArrayList<FluxoConta> lista;
-			lista=(ArrayList<FluxoConta>)dao.findAll();
-			return lista;
-		}
-	}
+	@Autowired
+	private FluxoContaDao dao;
 
+	@GetMapping("/conta")
+
+	public ArrayList<FluxoConta> recuperarTudo() {
+		ArrayList<FluxoConta> lista;
+		lista = (ArrayList<FluxoConta>) dao.findAll();
+		return lista;
+	}
+}
