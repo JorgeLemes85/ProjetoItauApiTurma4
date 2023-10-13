@@ -20,6 +20,7 @@ public class Cliente {
 	@Column(name="conta") 
 	private int conta; 
 	
+	
 	@Column(name="nome") 
 	private String nome; 
 	
